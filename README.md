@@ -58,7 +58,6 @@
 │   └── Dockerfile
 ├── captura/         
 ├── img/               # capturas de pantalla para este README
-├── informe/           # informe del grupo
 └── README.md
 ```
 
