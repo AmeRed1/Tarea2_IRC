@@ -1,0 +1,34 @@
+services:
+  ircd:
+    build: ./server
+    container_name: ircd
+    networks:
+      - redirc
+  cliente1:
+    build: ./client
+    container_name: cliente1
+    networks:
+      - redirc
+    depends_on:
+      - ircd
+  cliente2:
+    build: ./client
+    container_name: cliente2
+    networks:
+      - redirc
+    depends_on:
+      - ircd
+  sniffer:
+    image: nicolaka/netshoot
+    container_name: sniffer
+    profiles: ["captura"]
+    network_mode: "service:ircd"
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ./capturas:/capturas
+    command: tcpdump -i eth0 -U -w /capturas/servidor.pcap tcp port 6667
+networks:
+  redirc:
+    driver: bridge

@@ -1,0 +1,6 @@
+FROM python:3.12-slim
+RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
+RUN git clone https://github.com/jrosdahl/miniircd.git /opt/miniircd && pip install --no-cache-dir /opt/miniircd
+WORKDIR /opt/miniircd
+EXPOSE 6667
+CMD ["miniircd", "--ports=6667", "--debug", "--setuid", "root"]
