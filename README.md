@@ -23,8 +23,8 @@
 
 
 ## Tecnologías utilizadas
-- Docker - versión: 27.3.1
-- Docker Compose v2 - versión: 2.29.7-desktop.1
+- Docker - versión: 29.9.3, build 5457199
+- Docker Compose v2 - versión: 5.7.0
 - miniircd - instalado desde PyPI sobre la imagen `python:3.12-slim`
 - irssi - instalado desde los repositorios de `debian:bookworm-slim`
 - tcpdump (imagen `nicolaka/netshoot`)
